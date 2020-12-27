@@ -38,5 +38,5 @@ def sentencize(document, boundaries=BOUNDARIES, sent_tag='<SPLIT>'):
         
     return list_of_sentences
     
-# Test run
-sentencize('Test.txt')
+# Test run with test file. It's a lorem ipsum text file edited with added boundaries 
+sentencize('Test.txt') 
