@@ -25,7 +25,6 @@ def sentencize(document, boundaries=BOUNDARIES, sent_tag='<SPLIT>'):
     """
     
     lis = []
-    list_of_sentences = []
             
     with open(document, 'r') as f:
             
@@ -34,9 +33,11 @@ def sentencize(document, boundaries=BOUNDARIES, sent_tag='<SPLIT>'):
                 sentences = re.sub(bounds, r'\g<0>' + sent_tag, sentences) # sub function takes in 3 parameters; 1-What to match 2-what to put in place of the match 3-String to be processed 
             lis.append(sentences)            
 
-        list_of_sentences = [text.strip(" ") for text in lis[0].split(sent_tag) if text.strip(" ") != ""]
-        
-    return list_of_sentences
+    with open('output.txt', 'w') as o:
+        for text in lis[0].split(sent_tag): 
+            if text.strip(" ") != "":
+                o.write(text.strip(" \n"))
+                o.write('\n')
     
 # Test run with test file. It's a lorem ipsum text file edited with added boundaries 
 sentencize('Test.txt') 
